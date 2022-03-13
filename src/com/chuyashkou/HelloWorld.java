@@ -7,5 +7,7 @@ public class HelloWorld {
         System.out.println("Hello task2");
         System.out.println("Hello task3 -> dev");
         System.out.println("dev");
+        System.out.println("new two");
+        System.out.println("new one");
     }
 }
