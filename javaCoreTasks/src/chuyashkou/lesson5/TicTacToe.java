@@ -12,39 +12,32 @@ public class TicTacToe {
     public static void main(String[] args) {
 
         int i, j;
-        String player = "   X  ";
         int step = 1;
+        boolean win = false;
+        String player = "   X  ", checkWin = "";
         Scanner scanner = new Scanner(System.in);
         String[][] gamePad = {{"[0][0]", "[0][1]", "[0][2]"}, {"[1][0]", "[1][1]", "[1][2]"}, {"[2][0]", "[2][1]", "[2][2]"}};
 
         while (true) {
+            for (String[] strings : gamePad) {
+                for (int l = 0; l < gamePad.length; l++) {
 
-            for (String[] array : gamePad) {
-                for (String a : array) {
-                    System.out.print(a + " | ");
+                    if ((gamePad[l][0].equals(checkWin) && gamePad[l][1].equals(checkWin) && gamePad[l][2].equals(checkWin)) ||
+                            (gamePad[0][l].equals(checkWin) && gamePad[1][l].equals(checkWin) && gamePad[2][l].equals(checkWin))) {
+                        win = true;
+                    }
+                    if ((gamePad[0][0].equals(checkWin) && gamePad[1][1].equals(checkWin) && gamePad[2][2].equals(checkWin)) ||
+                            (gamePad[2][0].equals(checkWin) && gamePad[1][1].equals(checkWin) && gamePad[0][2].equals(checkWin))) {
+                        win = true;
+                    }
+
+                    System.out.print(strings[l] + " | ");
                 }
                 System.out.println("\n" + "--------------------------");
             }
 
-            if ((gamePad[0][0].equals("   X  ") && gamePad[0][1].equals("   X  ") && gamePad[0][2].equals("   X  ")) ||
-                    (gamePad[1][0].equals("   X  ") && gamePad[1][1].equals("   X  ") && gamePad[1][2].equals("   X  ")) ||
-                    (gamePad[2][0].equals("   X  ") && gamePad[2][1].equals("   X  ") && gamePad[2][2].equals("   X  ")) ||
-                    (gamePad[0][0].equals("   X  ") && gamePad[1][0].equals("   X  ") && gamePad[2][0].equals("   X  ")) ||
-                    (gamePad[0][1].equals("   X  ") && gamePad[1][1].equals("   X  ") && gamePad[2][1].equals("   X  ")) ||
-                    (gamePad[0][2].equals("   X  ") && gamePad[1][2].equals("   X  ") && gamePad[2][2].equals("   X  ")) ||
-                    (gamePad[0][0].equals("   X  ") && gamePad[1][1].equals("   X  ") && gamePad[2][2].equals("   X  ")) ||
-                    (gamePad[0][2].equals("   X  ") && gamePad[1][1].equals("   X  ") && gamePad[2][0].equals("   X  "))) {
-                System.out.println("Победил Х");
-                break;
-            } else if ((gamePad[0][0].equals("   О  ") && gamePad[0][1].equals("   О  ") && gamePad[0][2].equals("   О  ")) ||
-                    (gamePad[1][0].equals("   О  ") && gamePad[1][1].equals("   О  ") && gamePad[1][2].equals("   О  ")) ||
-                    (gamePad[2][0].equals("   О  ") && gamePad[2][1].equals("   О  ") && gamePad[2][2].equals("   О  ")) ||
-                    (gamePad[0][0].equals("   О  ") && gamePad[1][0].equals("   О  ") && gamePad[2][0].equals("   О  ")) ||
-                    (gamePad[0][1].equals("   О  ") && gamePad[1][1].equals("   О  ") && gamePad[2][1].equals("   О  ")) ||
-                    (gamePad[0][2].equals("   О  ") && gamePad[1][2].equals("   О  ") && gamePad[2][2].equals("   О  ")) ||
-                    (gamePad[0][0].equals("   О  ") && gamePad[1][1].equals("   О  ") && gamePad[2][2].equals("   О  ")) ||
-                    (gamePad[0][2].equals("   О  ") && gamePad[1][1].equals("   О  ") && gamePad[2][0].equals("   О  "))) {
-                System.out.println("Победил О");
+            if (win) {
+                System.out.println("Победил " + checkWin);
                 break;
             } else if (step == 10) {
                 System.out.println("Ничья!");
@@ -52,7 +45,6 @@ public class TicTacToe {
             }
 
             System.out.println("Ход игрока " + player + " введите координаты хода через пробел: ");
-
             i = scanner.nextInt();
             j = scanner.nextInt();
 
@@ -60,6 +52,7 @@ public class TicTacToe {
                 gamePad[i][j] = player;
                 ++step;
                 player = step % 2 == 0 ? "   О  " : "   X  ";
+                checkWin = (step - 1) % 2 == 0 ? "   О  " : "   X  ";
             } else {
                 System.out.println("Клетка занята!");
             }
