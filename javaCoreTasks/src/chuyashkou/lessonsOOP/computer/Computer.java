@@ -3,11 +3,11 @@ package chuyashkou.lessonsOOP.computer;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Computer{
+public class Computer {
 
     private String core;
 
-    private  String randomAccessMemory;
+    private String randomAccessMemory;
 
     private String hardDiskDrive;
 
@@ -28,24 +28,24 @@ public class Computer{
     }
 
     public void description() {
-        System.out.println("Computer{" +  "core='" + core + '\'' +
+        System.out.println("Computer{" + "core='" + core + '\'' +
                 ", randomAccessMemory='" + randomAccessMemory + '\'' +
                 ", hardDiskDrive='" + hardDiskDrive + '\'' +
                 ", recource=" + recource +
                 '}');
     }
 
-    public void on () {
-        if (recource == 0){
+    public void on() {
+        if (recource == 0) {
             properly = false;
             --this.recource;
             System.out.println("Ресурс исчерпан. Комп сгорел.");
-        }else if (properly) {
+        } else if (properly) {
             System.out.println("Для включения нажмите 0 или 1:");
         }
-        if (!properly){
+        if (!properly) {
             System.out.println("Комп сгорел.");
-        } else if (scanner.nextInt() == random.nextInt(2)){
+        } else if (scanner.nextInt() == random.nextInt(2)) {
             System.out.println("Включился.");
             --this.recource;
         } else {
@@ -54,17 +54,17 @@ public class Computer{
         }
     }
 
-    public void off () {
-        if (recource == 0){
+    public void off() {
+        if (recource == 0) {
             properly = false;
             --this.recource;
             System.out.println("Ресурс исчерпан. Комп сгорел.");
-        }else if (properly) {
+        } else if (properly) {
             System.out.println("Для выключения нажмите 0 или 1:");
         }
-        if (!properly){
+        if (!properly) {
             System.out.println("Комп сгорел.");
-        } else if (scanner.nextInt() == random.nextInt(2)){
+        } else if (scanner.nextInt() == random.nextInt(2)) {
             System.out.println("Выключился.");
             --this.recource;
         } else {
