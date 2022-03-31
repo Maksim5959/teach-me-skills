@@ -4,11 +4,9 @@ import java.util.Random;
 
 public class Matrix {
 
-    private int values[][];
-
+    private int [][] values;
     private int rows;
-
-    private int colums;
+    private int columns;
 
     public Matrix() {
     }
@@ -17,9 +15,9 @@ public class Matrix {
         this.values = values;
     }
 
-    public Matrix(int rows, int colums) {
+    public Matrix(int rows, int columns) {
         Random random = new Random();
-        this.values = new int[colums][rows];
+        this.values = new int[columns][rows];
         for (int i = 0; i < values.length; i++) {
             for (int j = 0; j < values[0].length; j++) {
                 values[i][j] = random.nextInt(10);
@@ -43,12 +41,12 @@ public class Matrix {
         this.rows = rows;
     }
 
-    public int getColums() {
-        return colums;
+    public int getColumns() {
+        return columns;
     }
 
-    public void setColums(int colums) {
-        this.colums = colums;
+    public void setColumns(int columns) {
+        this.columns = columns;
     }
 
     public void printMatrix() {
@@ -58,6 +56,7 @@ public class Matrix {
             }
             System.out.println();
         }
+        System.out.println();
     }
 
     public void sumMatrix(int[][] matrix) {
@@ -68,17 +67,19 @@ public class Matrix {
                 }
                 System.out.println();
             }
+            System.out.println();
         } else {
             System.out.println("Суммирование не возможно.");
         }
     }
 
     public void multiply(int value) {
-        for (int i = 0; i < this.values.length; i++) {
+        for (int[] ints : this.values) {
             for (int j = 0; j < this.values[0].length; j++) {
-                System.out.print(values[i][j] * value + " ");
+                System.out.print(ints[j] * value + " ");
             }
             System.out.println();
         }
+        System.out.println();
     }
 }
