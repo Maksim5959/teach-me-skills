@@ -31,7 +31,7 @@ public class PassengerGroundTransport extends GroundTransport {
     }
 
     public void distance(double hours) {
-        System.out.println("Автомобиль " + super.getBrand() + " за " + hours + " часа(ов) " + ", двигаясь с максимальной скоростью " + super.getMaxSpeed() + " км/ч " + ", проедит " +
+        System.out.println("Автомобиль " + super.getBrand() + " за " + hours + " часа(ов) " + ", двигаясь с максимальной скоростью " + super.getMaxSpeed() + " км/ч " + ", проедет " +
                 super.getMaxSpeed() * hours + " километров и затратит " + fuelRate(hours) + " литров топлива.");
     }
 

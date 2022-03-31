@@ -13,7 +13,7 @@ public class Dog extends Animal {
     }
 
     @Override
-    public void makeNoice() {
+    public void makeNoise() {
         System.out.println("Гав");
     }
 

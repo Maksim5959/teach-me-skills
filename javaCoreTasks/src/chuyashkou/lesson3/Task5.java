@@ -7,14 +7,14 @@ public class Task5 {
 
     public static void main(String[] args) {
 
-        int [] values = {1, -1, -5};
+        int[] values = {1, -1, -5};
         int countPos = 0;
         int countNeg = 0;
 
         for (int i = 0; i < values.length; i++) {
-            if (values [i] > 0) {
+            if (values[i] > 0) {
                 countPos++;
-            } else if (values [i] < 0) {
+            } else if (values[i] < 0) {
                 countNeg++;
             }
         }

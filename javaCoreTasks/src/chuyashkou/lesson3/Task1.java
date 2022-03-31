@@ -32,7 +32,7 @@ public class Task1 {
                 System.out.println(value + " - трехзначное " + valueType + " число.");
                 break;
             default:
-                System.out.println(value +  " - " + valueType + " четырехзначное и более число либо ноль.");
+                System.out.println(value + " - " + valueType + " четырехзначное и более число либо ноль.");
                 break;
         }
     }
