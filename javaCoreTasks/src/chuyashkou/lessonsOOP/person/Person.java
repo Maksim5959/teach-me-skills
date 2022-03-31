@@ -14,12 +14,12 @@ public class Person {
         this.age = age;
     }
 
-    public void move () {
-        System.out.println(this.fullName + ", " + age + " лет " +  " говорит.");
+    public void move() {
+        System.out.println(this.fullName + ", " + age + " лет " + " говорит.");
     }
 
-    public void talk () {
-        System.out.println(this.fullName + ", " + age + " лет " +  " говорит.");
+    public void talk() {
+        System.out.println(this.fullName + ", " + age + " лет " + " говорит.");
     }
 
 }

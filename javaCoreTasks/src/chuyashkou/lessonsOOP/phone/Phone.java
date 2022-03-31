@@ -4,9 +4,9 @@ public class Phone {
 
     private long number;
 
-    private  String model;
+    private String model;
 
-    private  int weight;
+    private int weight;
 
 
     public Phone() {
@@ -18,7 +18,7 @@ public class Phone {
     }
 
     public Phone(long number, String model, int weight) {
-        this (number, model);
+        this(number, model);
         this.weight = weight;
     }
 
@@ -26,16 +26,16 @@ public class Phone {
         return number;
     }
 
-    public void receiveCall (String name) {
+    public void receiveCall(String name) {
         System.out.println("Звонит " + name);
     }
 
-    public void receiveCall (String name, long number) {
+    public void receiveCall(String name, long number) {
         System.out.println("Звонит " + name + ", номер телефона " + number);
     }
 
-    public void sendMessage (long ... numbers) {
-        for (long number:numbers) {
+    public void sendMessage(long... numbers) {
+        for (long number : numbers) {
             System.out.print(number + " ");
         }
     }
