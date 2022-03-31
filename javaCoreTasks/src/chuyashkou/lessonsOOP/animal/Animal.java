@@ -29,7 +29,7 @@ public abstract class Animal {
         this.location = location;
     }
 
-    public abstract void makeNoice();
+    public abstract void makeNoise();
 
     public abstract void eat();
 

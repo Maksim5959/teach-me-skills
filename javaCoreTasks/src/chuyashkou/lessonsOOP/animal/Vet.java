@@ -21,6 +21,6 @@ public class Vet {
 
     public void treatAnimal(Animal animal) {
         System.out.print("Животное из " + animal.getLocation() + " ест " + animal.getFood() + ", ");
-        animal.makeNoice();
+        animal.makeNoise();
     }
 }

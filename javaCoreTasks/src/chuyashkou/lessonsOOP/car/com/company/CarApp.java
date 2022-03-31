@@ -11,7 +11,7 @@ public class CarApp {
     public static void main(String[] args) {
 
         Engine engine = new Engine(560, "General Motors");
-        Driver person = new Person("Ivanov Ivan Ivanivich", 1, 25);
+        Driver person = new Person("Ivanov Ivan Ivanovich", 1, 25);
 
         Car car = new Lorry("Scania", "Long", 15, engine, person, 20);
 

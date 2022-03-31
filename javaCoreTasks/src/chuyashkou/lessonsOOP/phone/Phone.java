@@ -3,11 +3,8 @@ package chuyashkou.lessonsOOP.phone;
 public class Phone {
 
     private long number;
-
     private String model;
-
     private int weight;
-
 
     public Phone() {
     }
@@ -24,6 +21,26 @@ public class Phone {
 
     public long getNumber() {
         return number;
+    }
+
+    public void setNumber(long number) {
+        this.number = number;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public int getWeight() {
+        return weight;
+    }
+
+    public void setWeight(int weight) {
+        this.weight = weight;
     }
 
     public void receiveCall(String name) {

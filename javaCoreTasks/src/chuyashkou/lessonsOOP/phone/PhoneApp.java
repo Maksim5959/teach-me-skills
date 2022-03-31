@@ -6,19 +6,19 @@ public class PhoneApp {
 
         Phone samsung = new Phone(375293332255L, "Samsung", 300);
         Phone honor = new Phone(375294442255L, "Honor", 325);
-        Phone huawey = new Phone(375292532255L, "Huawey", 150);
+        Phone huawei = new Phone(375292532255L, "Huawei", 150);
 
         System.out.println(samsung);
         System.out.println(honor);
-        System.out.println(huawey);
+        System.out.println(huawei);
 
         samsung.receiveCall("Ivan");
         honor.receiveCall("Vasily");
-        huawey.receiveCall("Konstantin");
+        huawei.receiveCall("Konstantin");
 
         System.out.println(samsung.getNumber());
         System.out.println(honor.getNumber());
-        System.out.println(huawey.getNumber());
+        System.out.println(huawei.getNumber());
 
         samsung.receiveCall("Ivan", 375293332255L);
 

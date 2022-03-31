@@ -6,39 +6,76 @@ import java.util.Scanner;
 public class Computer {
 
     private String core;
-
     private String randomAccessMemory;
-
     private String hardDiskDrive;
-
     private static boolean properly;
+    private int resource;
+    private static final Random random = new Random();
+    private static final Scanner scanner = new Scanner(System.in);
 
-    private int recource;
-
-    private Random random = new Random();
-
-    private Scanner scanner = new Scanner(System.in);
+    public Computer() {
+    }
 
     public Computer(String core, String randomAccessMemory, String hardDiskDrive) {
         this.core = core;
         this.randomAccessMemory = randomAccessMemory;
         this.hardDiskDrive = hardDiskDrive;
-        recource = random.nextInt(2) + 1;
+        resource = random.nextInt(2) + 1;
         properly = true;
+    }
+
+    public String getCore() {
+        return core;
+    }
+
+    public void setCore(String core) {
+        this.core = core;
+    }
+
+    public String getRandomAccessMemory() {
+        return randomAccessMemory;
+    }
+
+    public void setRandomAccessMemory(String randomAccessMemory) {
+        this.randomAccessMemory = randomAccessMemory;
+    }
+
+    public String getHardDiskDrive() {
+        return hardDiskDrive;
+    }
+
+    public void setHardDiskDrive(String hardDiskDrive) {
+        this.hardDiskDrive = hardDiskDrive;
+    }
+
+    public static boolean isProperly() {
+        return properly;
+    }
+
+    public static void setProperly(boolean properly) {
+        Computer.properly = properly;
+    }
+
+    public int getResource() {
+        return resource;
+    }
+
+    public void setResource(int resource) {
+        this.resource = resource;
     }
 
     public void description() {
         System.out.println("Computer{" + "core='" + core + '\'' +
                 ", randomAccessMemory='" + randomAccessMemory + '\'' +
                 ", hardDiskDrive='" + hardDiskDrive + '\'' +
-                ", recource=" + recource +
+                ", resource=" + resource +
                 '}');
     }
 
     public void on() {
-        if (recource == 0) {
+        if (resource == 0) {
             properly = false;
-            --this.recource;
+            --this.resource;
             System.out.println("Ресурс исчерпан. Комп сгорел.");
         } else if (properly) {
             System.out.println("Для включения нажмите 0 или 1:");
@@ -47,7 +84,7 @@ public class Computer {
             System.out.println("Комп сгорел.");
         } else if (scanner.nextInt() == random.nextInt(2)) {
             System.out.println("Включился.");
-            --this.recource;
+            --this.resource;
         } else {
             properly = false;
             System.out.println("Комп сгорел.");
@@ -55,9 +92,9 @@ public class Computer {
     }
 
     public void off() {
-        if (recource == 0) {
+        if (resource == 0) {
             properly = false;
-            --this.recource;
+            --this.resource;
             System.out.println("Ресурс исчерпан. Комп сгорел.");
         } else if (properly) {
             System.out.println("Для выключения нажмите 0 или 1:");
@@ -66,7 +103,7 @@ public class Computer {
             System.out.println("Комп сгорел.");
         } else if (scanner.nextInt() == random.nextInt(2)) {
             System.out.println("Выключился.");
-            --this.recource;
+            --this.resource;
         } else {
             properly = false;
             System.out.println("Комп сгорел.");
