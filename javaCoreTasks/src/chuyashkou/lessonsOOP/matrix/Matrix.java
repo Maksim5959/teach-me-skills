@@ -17,7 +17,7 @@ public class Matrix {
 
     public Matrix(int rows, int columns) {
         Random random = new Random();
-        this.values = new int[columns][rows];
+        this.values = new int[rows][columns];
         for (int i = 0; i < values.length; i++) {
             for (int j = 0; j < values[0].length; j++) {
                 values[i][j] = random.nextInt(10);
@@ -62,14 +62,14 @@ public class Matrix {
     public void sumMatrix(int[][] matrix) {
         if (matrix.length == this.values.length && matrix[0].length == this.values[0].length) {
             for (int i = 0; i < matrix.length; i++) {
-                for (int j = 0; j < matrix.length; j++) {
+                for (int j = 0; j < matrix[0].length; j++) {
                     System.out.print(matrix[i][j] + values[i][j] + " ");
                 }
                 System.out.println();
             }
             System.out.println();
         } else {
-            System.out.println("Суммирование не возможно.");
+            System.out.println("Суммирование матриц невозможно.");
         }
     }
 
@@ -81,5 +81,27 @@ public class Matrix {
             System.out.println();
         }
         System.out.println();
+    }
+
+    public void multiplyMatrix(int[][] matrix) {
+        if (values[0].length == matrix.length) {
+            int[][] results = new int[values.length][matrix[0].length];
+            for (int i = 0; i < values.length; i++) {
+                for (int j = 0; j < matrix[0].length; j++) {
+                    for (int k = 0; k < matrix.length; k++) {
+                        results[i][j] += values[i][k] * matrix[k][j];
+                    }
+                }
+            }
+
+            for (int[] result : results) {
+                for (int a : result) {
+                    System.out.print(a + " ");
+                }
+                System.out.println();
+            }
+        } else {
+            System.out.println("Умножение матриц невозможно.");
+        }
     }
 }
