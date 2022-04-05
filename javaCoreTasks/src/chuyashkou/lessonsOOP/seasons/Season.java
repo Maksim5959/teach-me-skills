@@ -52,7 +52,7 @@ public enum Season {
 
     @Override
     public String toString() {
-        return super.name() + "{" +
+        return super.name() + " {" +
                 " temperature = " + temperature +
                 '}';
     }
