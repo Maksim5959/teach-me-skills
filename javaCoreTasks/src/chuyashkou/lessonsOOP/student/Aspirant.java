@@ -2,67 +2,30 @@ package chuyashkou.lessonsOOP.student;
 
 public class Aspirant extends Student {
 
-    private String firstname;
-    private String lastname;
-    private String group;
-    private double averageMark;
+    private String scienceWork;
 
     public Aspirant() {
     }
 
-    public Aspirant(String firstname, String lastname, String group, double averageMark) {
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.group = group;
-        this.averageMark = averageMark;
+    public Aspirant(String firstname, String lastname, String group, double averageMark, String scienceWork) {
+        super(firstname, lastname, group, averageMark);
+        this.scienceWork = scienceWork;
     }
 
-    @Override
-    public String getFirstname() {
-        return firstname;
+    public String getScienceWork() {
+        return scienceWork;
     }
 
-    @Override
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
-    }
-
-    @Override
-    public String getLastname() {
-        return lastname;
-    }
-
-    @Override
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
-    }
-
-    @Override
-    public String getGroup() {
-        return group;
-    }
-
-    @Override
-    public void setGroup(String group) {
-        this.group = group;
-    }
-
-    @Override
-    public double getAverageMark() {
-        return averageMark;
-    }
-
-    @Override
-    public void setAverageMark(double averageMark) {
-        this.averageMark = averageMark;
+    public void setScienceWork(String scienceWork) {
+        this.scienceWork = scienceWork;
     }
 
     @Override
     public void getScholarship() {
-        if (this.averageMark == 5) {
-            System.out.println("Стипендия " + firstname + " " + lastname + " = 200 рублей.");
+        if (super.getAverageMark() == 5) {
+            System.out.println("Стипендия " + this.getFirstname() + " " + this.getLastname() + " = 180 рублей.");
         } else {
-            System.out.println("Стипендия " + firstname + " " + lastname + " = 180 рублей.");
+            System.out.println("Стипендия " + this.getFirstname() + " " + this.getLastname() + " = 200 рублей.");
         }
     }
 }
