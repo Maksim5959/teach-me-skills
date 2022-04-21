@@ -6,7 +6,19 @@ import java.util.Random;
 public class SortingAlgorithms {
 
     public static void main(String[] args) {
-        System.out.println(Arrays.toString(insertionSort(createArray(10))));
+        System.out.println(Arrays.toString(BubbleSort.bubbleSort(createArray(10))));
+        System.out.println(Arrays.toString(InsertionSort.insertionSort(createArray(10))));
+        System.out.println(Arrays.toString(InsertionSort.binaryInsertionSort(createArray(10))));
+        System.out.println(Arrays.toString(SelectionSort.selectionSort(createArray(10))));
+        System.out.println(Arrays.toString(ShuttleSort.shuttleSort(createArray(10))));
+        System.out.println(Arrays.toString(ShellSort.shellSort(createArray(10))));
+        System.out.println(Arrays.toString(MergeSort.mergeSort(createArray(10))));
+        System.out.println(Arrays.toString(QuickSort.quickSort(createArray(10), 0, 9)));
+
+        int[] array = InsertionSort.insertionSort(createArray(10));
+        System.out.println(Arrays.toString(array));
+        System.out.println(binarySearch(array, 50, 0, 9));
+        System.out.println(linearSearch(array, 50));
     }
 
     private static int[] createArray(int elementsCount) {
@@ -18,79 +30,30 @@ public class SortingAlgorithms {
         return array;
     }
 
-    private static int[] bubbleSort(int[] values) {
-        boolean needIteration = true;
-        while (needIteration) {
-            needIteration = false;
-            for (int i = 1; i < values.length; i++) {
-                if (values[i] < values[i - 1]) {
-                    int tmp = values[i];
-                    values[i] = values[i - 1];
-                    values[i - 1] = tmp;
-                    needIteration = true;
-                }
-            }
+    private static int binarySearch(int[] values, int value, int left, int right) {
+        int middle = left + (right - left) / 2;
+
+        if (left >= right && values[middle] != value) {
+            return -1;
         }
-        return values;
+
+        if (values[middle] == value) {
+            return middle;
+        } else if (values[middle] > value) {
+            return binarySearch(values, value, left, middle - 1);
+        } else if (values[middle] < value) {
+            return binarySearch(values, value, middle + 1, right);
+        } else {
+            return -1;
+        }
     }
 
-
-    private static int[] quickSort(int[] values, int low, int high) {
-        int left = low;
-        int right = high;
-        int mark = values[(left + right) / 2];
-        while (left < right) {
-            while (values[left] < mark) {
-                left++;
-            }
-            while (values[right] > mark) {
-                right--;
-            }
-            if (left <= right) {
-                int tmp = values[left];
-                values[left] = values[right];
-                values[right] = tmp;
-                left++;
-                right--;
-            }
-        }
-        if (low < right) {
-            quickSort(values, low, right);
-        }
-        if (left < high) {
-            quickSort(values, left, high);
-        }
-        return values;
-    }
-
-    private static int[] selectionSort(int[] values) {
+    private static int linearSearch(int[] values, int value) {
         for (int i = 0; i < values.length; i++) {
-            int minInd = i;
-            for (int j = i; j < values.length; j++) {
-                if (values[minInd] > values[j]) {
-                    minInd = j;
-                }
+            if (value == values[i]) {
+                return i;
             }
-            int tmp = values[minInd];
-            values[minInd] = values[i];
-            values[i] = tmp;
         }
-        return values;
-    }
-
-    private static int[] insertionSort(int[] values) {
-        for (int i = 0; i < values.length; i++) {
-            int value = values[i];
-            int index = i - 1;
-            for (; index >= 0; index--) {
-                if (value < values[index]) {
-                    values[index + 1] = values[index];
-                } else {
-                    break;
-                }
-            }
-            values [index + 1] = value;
-        }
-        return values;
+        return -1;
     }
 }
