@@ -14,6 +14,7 @@ public class SortingAlgorithms {
         System.out.println(Arrays.toString(ShellSort.shellSort(createArray(10))));
         System.out.println(Arrays.toString(MergeSort.mergeSort(createArray(10))));
         System.out.println(Arrays.toString(QuickSort.quickSort(createArray(10), 0, 9)));
+        System.out.println(Arrays.toString(RadixSort.radixSort(createArray(10))));
 
         int[] array = InsertionSort.insertionSort(createArray(10));
         System.out.println(Arrays.toString(array));
