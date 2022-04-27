@@ -7,15 +7,15 @@ import java.util.regex.Pattern;
 
 public final class TextHandler {
 
+    private static final  String NEW_REGEX_FOR_SPLIT_TO_SENTENCES = "([а-яА-Я0-9_]|\\w)[а-яА-Я\\w\\s,’:()]+([.,]\\d+[а-яА-Я\\w\\s,()]*)*[;.!?…]";
     private static final String REGEX_FOR_SPLIT_TO_SENTENCES = "([а-яА-Я]|[A-Za-z])[^;.!?…]+[;.!?…]";
-    private static final String REGEX_FOR_SPLIT_TO_WORDS = "([\n-,:]\\s+|\\s+)";
-    private static final String WORDS_REGEX = "(\\w+|[А-Яа-я0-9_]+)";
-    private static final String PUNCTUATION_REGEX = "\\p{Punct}";
+    private static final String REGEX_FOR_SPLIT_TO_WORDS = "([!.…,?;]+\\s+|[!.…,?;]+$|\\s+)";
+    private static final String PUNCTUATION_REGEX = "([\\p{Punct}…]\\s+|[\\p{Punct}…]$|[!?])";
     private static final String SEARCH_NUMBERS_REGEX = "(\\d+([.,])\\d+|\\d+)";
 
     public static String[] getSentences(String text) {
         List<String> sentences = new ArrayList<>();
-        Pattern pattern = Pattern.compile(REGEX_FOR_SPLIT_TO_SENTENCES);
+        Pattern pattern = Pattern.compile(NEW_REGEX_FOR_SPLIT_TO_SENTENCES);
         Matcher matcher = pattern.matcher(text);
         while (matcher.find()) {
             sentences.add(text.substring(matcher.start(), matcher.end()).replace('\n', ' '));
@@ -28,13 +28,7 @@ public final class TextHandler {
     }
 
     public static int getWordsCount(String text) {
-        int counter = 0;
-        Pattern pattern = Pattern.compile(WORDS_REGEX);
-        Matcher matcher = pattern.matcher(text);
-        while (matcher.find()) {
-            counter++;
-        }
-        return counter;
+        return text.split(REGEX_FOR_SPLIT_TO_WORDS).length;
     }
 
     public static int getPunctuationCount(String text) {
