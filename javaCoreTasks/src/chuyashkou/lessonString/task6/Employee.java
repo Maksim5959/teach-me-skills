@@ -1,5 +1,9 @@
 package chuyashkou.lessonString.task6;
 
+import chuyashkou.lesson11.TextWriterIO;
+
+import java.util.Date;
+
 public class Employee {
 
     private String fullName;
@@ -27,6 +31,11 @@ public class Employee {
 
     public void setSalary(double salary) {
         this.salary = salary;
+    }
+
+    public void addReportToFile(String fileName) {
+        Date date = new Date();
+        TextWriterIO.writeTextToFileByPrintWriter(fileName, "%-30s%-20s got %15.2f dollars.\n",date, this.getFullName(), this.getSalary());
     }
 
     @Override
