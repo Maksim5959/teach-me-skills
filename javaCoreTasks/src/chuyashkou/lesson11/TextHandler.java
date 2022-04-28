@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
 
 public final class TextHandler {
 
-    private static final  String NEW_REGEX_FOR_SPLIT_TO_SENTENCES = "([а-яА-Я0-9_]|\\w)[а-яА-Я\\w\\s,’:()]+([.,]\\d+[а-яА-Я\\w\\s,()]*)*[;.!?…]";
+    private static final  String NEW_REGEX_FOR_SPLIT_TO_SENTENCES = "([а-яА-Я0-9_]|[\\w]|[0-9][.,])[а-яА-Я\\w\\s,’:()]+([.,]\\d+[а-яА-Я\\w\\s,()]*)*([;.…]|[!?]+)";
     private static final String REGEX_FOR_SPLIT_TO_SENTENCES = "([а-яА-Я]|[A-Za-z])[^;.!?…]+[;.!?…]";
     private static final String REGEX_FOR_SPLIT_TO_WORDS = "([!.…,?;]+\\s+|[!.…,?;]+$|\\s+)";
     private static final String PUNCTUATION_REGEX = "([\\p{Punct}…]\\s+|[\\p{Punct}…]$|[!?])";
