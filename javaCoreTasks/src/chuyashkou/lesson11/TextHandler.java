@@ -7,15 +7,16 @@ import java.util.regex.Pattern;
 
 public final class TextHandler {
 
-    private static final  String NEW_REGEX_FOR_SPLIT_TO_SENTENCES = "([а-яА-Я0-9_]|[\\w]|[0-9][.,])[а-яА-Я\\w\\s,’:()]+([.,]\\d+[а-яА-Я\\w\\s,()]*)*([;.…]|[!?]+)";
-    private static final String REGEX_FOR_SPLIT_TO_SENTENCES = "([а-яА-Я]|[A-Za-z])[^;.!?…]+[;.!?…]";
-    private static final String REGEX_FOR_SPLIT_TO_WORDS = "([!.…,?;]+\\s+|[!.…,?;]+$|\\s+)";
+    //([а-яА-Я0-9_]|[\w]|[0-9][.,])[а-яА-Я\w\s,’:()]+([.,]\d+[а-яА-Я\w\s,()]*)*([;.…]|[!?]+)
+    private static final String REGEX_FOR_SPLIT_TO_SENTENCES = "\\w.+?[;….!?]((?=\\s+)|$)";
+    private static final String REGEX_FOR_SPLIT_TO_WORDS = "([!.…,?:;-]+\\s+|[!.…,?;-]+$|\\s+)";
     private static final String PUNCTUATION_REGEX = "([\\p{Punct}…]\\s+|[\\p{Punct}…]$|[!?])";
     private static final String SEARCH_NUMBERS_REGEX = "(\\d+([.,])\\d+|\\d+)";
+    private static final String SEARCH_HEX_NUMBERS_REGEX = "0x[A-Za-z0-9]+";
 
     public static String[] getSentences(String text) {
         List<String> sentences = new ArrayList<>();
-        Pattern pattern = Pattern.compile(NEW_REGEX_FOR_SPLIT_TO_SENTENCES);
+        Pattern pattern = Pattern.compile(REGEX_FOR_SPLIT_TO_SENTENCES,Pattern.DOTALL | Pattern.UNICODE_CHARACTER_CLASS);
         Matcher matcher = pattern.matcher(text);
         while (matcher.find()) {
             sentences.add(text.substring(matcher.start(), matcher.end()).replace('\n', ' '));
@@ -62,13 +63,23 @@ public final class TextHandler {
         return false;
     }
 
-    public static Double [] getNumbers (String text){
+    public static Double[] getNumbers(String text) {
         List<Double> values = new ArrayList<>();
         Pattern pattern = Pattern.compile(SEARCH_NUMBERS_REGEX);
         Matcher matcher = pattern.matcher(text);
-        while (matcher.find()){
-            values.add(Double.parseDouble(text.substring(matcher.start(),matcher.end()).replace(',','.')));
+        while (matcher.find()) {
+            values.add(Double.parseDouble(text.substring(matcher.start(), matcher.end()).replace(',', '.')));
         }
-        return  values.toArray(new Double [0]);
+        return values.toArray(new Double[0]);
+    }
+
+    public static Long[] getHexNumbers(String text) {
+        List<Long> values = new ArrayList<>();
+        Pattern pattern = Pattern.compile(SEARCH_HEX_NUMBERS_REGEX);
+        Matcher matcher = pattern.matcher(text);
+        while (matcher.find()) {
+            values.add(Long.parseLong(text.substring(matcher.start() + 2, matcher.end()), 16));
+        }
+        return values.toArray(new Long[0]);
     }
 }
