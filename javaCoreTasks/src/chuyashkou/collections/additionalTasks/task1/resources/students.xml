@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<students>
+    <student age="22" faculty="МТФ" fullName="МАЙДАНЧУК СЕРГЕЙ АНАТОЛЬЕВИЧ" id="824538251" year="3"/>
+    <student age="19" faculty="ЭФ" fullName="АНИСИМОВ ВАСИЛИЙ ЯКОВЛЕВИЧ" id="655433983" year="1"/>
+    <student age="18" faculty="МТФ" fullName="ЗОЛОТАРЕВ ИВАН ИГНАТЬЕВИЧ" id="1699109451" year="4"/>
+    <student age="19" faculty="ГЭФ" fullName="АШТАНЦЕВ ФНДРЕЙ МОИСЕЕВИЧ" id="1504971910" year="5"/>
+    <student age="22" faculty="ФАИС" fullName="МАШКАНЦЕВ ИГНАТ ИГНАТОВИЧ" id="1760212890" year="1"/>
+    <student age="18" faculty="ЭФ" fullName="ИВАНОВ ИВАН ИВАНОВИЧ" id="1779900765" year="1"/>
+    <student age="19" faculty="МТФ" fullName="КИРКОРОВ ФИЛЛИП ИВАНОВИЧ" id="1849573434" year="3"/>
+    <student age="20" faculty="ГЭФ" fullName="СЕМЕНОВ ЮРИЙ ЕВГЕНЬЕВИЧ" id="1256906175" year="3"/>
+    <student age="18" faculty="МСФ" fullName="АВСЮКЕВИЧ ЕВГЕНИЙ АНАТОЛЬЕВИЧ" id="339091874" year="2"/>
+    <student age="18" faculty="МТФ" fullName="СТАРОВОЙТОВ СЕМЕН ИВАНОВИЧ" id="21948815" year="2"/>
+    <student age="21" faculty="ГЭФ" fullName="ВОЛЧЕНКОВ ЮРИЙ ВАСЬЛЬЕВИЧ" id="294387402" year="1"/>
+    <student age="20" faculty="ФАИС" fullName="ГРОМЫКО ДЕНИС СЕРГЕЕВИЧ" id="1336095617" year="4"/>
+    <student age="19" faculty="ГЭФ" fullName="РОМАНЦЕВ ИГОРЬ СЕРГЕЕВИЧ" id="2066444407" year="2"/>
+    <student age="19" faculty="ЭФ" fullName="АВСЮКЕВИЧ ЕВГЕНИЙ АНАТОЛЬЕВИЧ" id="307764237" year="4"/>
+    <student age="19" faculty="ГЭФ" fullName="СТАРОВОЙТОВ СЕМЕН ИВАНОВИЧ" id="22205402" year="2"/>
+    <student age="20" faculty="МТФ" fullName="ОДИНЦОВ КОНСТАНТИН СЕРГЕЕВИЧ" id="1794782657" year="5"/>
+    <student age="22" faculty="МСФ" fullName="МАЙДАНЧУК СЕРГЕЙ АНАТОЛЬЕВИЧ" id="824539214" year="1"/>
+    <student age="21" faculty="ЭФ" fullName="МАЙДАНЧУК СЕРГЕЙ АНАТОЛЬЕВИЧ" id="855868773" year="3"/>
+    <student age="22" faculty="ЭФ" fullName="РОМАНЦЕВ ИГОРЬ СЕРГЕЕВИЧ" id="2097513535" year="4"/>
+    <student age="21" faculty="ФАИС" fullName="СЕМЕНОВ ЮРИЙ ЕВГЕНЬЕВИЧ" id="278082599" year="5"/>
+</students>
