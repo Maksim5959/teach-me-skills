@@ -1,6 +1,5 @@
 package chuyashkou.collections.additionalTasks.task1.dom;
 
-import chuyashkou.collections.additionalTasks.task1.model.Faculty;
 import chuyashkou.collections.additionalTasks.task1.model.Student;
 import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
@@ -12,14 +11,14 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public final class StudentsXmlParser {
 
-    public static List<Student> parseStudentsXml() {
+    public static Map<Long, Student> parseStudentsXml() {
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-        List<Student> studentList = new ArrayList<>();
+        Map<Long, Student> students = new HashMap<>();
         Document document = null;
 
         try {
@@ -46,9 +45,9 @@ public final class StudentsXmlParser {
                         case "year" -> student.setYear(Integer.parseInt(attributes.item(j).getTextContent()));
                     }
                 }
-                studentList.add(student);
+                students.put(student.getId(), student);
             }
         }
-        return studentList;
+        return students;
     }
 }

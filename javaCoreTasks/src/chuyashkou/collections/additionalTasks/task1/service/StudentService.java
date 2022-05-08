@@ -1,20 +1,18 @@
 package chuyashkou.collections.additionalTasks.task1.service;
 
-import java.io.BufferedReader;
-
 public interface StudentService {
 
-    void getAllStudents();
+    void getAllStudentsByName();
 
-    void addNewStudent(BufferedReader bufferedReader);
+    void getAllStudentsByAge();
 
-    void updateStudent(BufferedReader bufferedReader);
+    void addNewStudent(String[] studentFields);
 
-    void deleteStudent(BufferedReader bufferedReader);
+    void updateStudent(String id, String[] studentFields);
 
-    void getAllStudentsInFaculty(BufferedReader bufferedReader);
+    void deleteStudent(String id);
+
+    void getAllStudentsInFaculty(String faculty);
 
     void generateUniversity(String[] faculties, String[] names);
-
-    void deleteAllStudents(BufferedReader bufferedReader);
 }

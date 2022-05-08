@@ -16,11 +16,11 @@ import javax.xml.transform.stream.StreamResult;
 import java.io.BufferedOutputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.List;
+import java.util.Map;
 
 public final class StudentsXmlGenerator {
 
-    public static void generateStudentsXml(List<Student> students) {
+    public static void generateStudentsXml(Map<Long, Student> students) {
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 
         try (BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(
@@ -30,7 +30,7 @@ public final class StudentsXmlGenerator {
             Element root = document.createElement("students");
             document.appendChild(root);
 
-            for (Student student : students) {
+            for (Student student : students.values()) {
                 if (student != null && student.getAge() != 0) {
                     Element inner = document.createElement("student");
                     inner.setAttribute("id", String.format("%s", student.getId()));
