@@ -1,88 +1,95 @@
 package chuyashkou.collections.additionalTasks.task1.service.impl;
 
 import chuyashkou.collections.additionalTasks.task1.dao.impl.StudentDaoImpl;
-import chuyashkou.collections.additionalTasks.task1.io.ConsoleReader;
 import chuyashkou.collections.additionalTasks.task1.model.Faculty;
 import chuyashkou.collections.additionalTasks.task1.model.Student;
-import chuyashkou.collections.additionalTasks.task1.model.comparators.StudentsComparatorByAge;
-import chuyashkou.collections.additionalTasks.task1.model.comparators.StudentsComparatorByName;
 import chuyashkou.collections.additionalTasks.task1.service.StudentService;
-import chuyashkou.lesson11.TextReaderIO;
 
-import java.io.BufferedReader;
-import java.io.File;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Random;
 import java.util.TreeSet;
 
 public class StudentServiceImpl implements StudentService {
 
+    private static final String REGEX_BY_STUDENTS_YEAR_VALIDATIONS = "[1-5]";
+    private static final String REGEX_BY_NAME_VALIDATIONS = "([А-Яа-яA-Za-z]+[\\s]){2}[А-Яа-яA-Za-z]+";
+    private static final String REGEX_BY_AGE_VALIDATIONS = "([1][7-9]|[2][\\d]|[3][\\d])";
+    private static final String REGEX_BY_ID_VALIDATIONS = "[\\d]+";
+
     private final StudentDaoImpl studentDao = new StudentDaoImpl();
-    private final List<Student> students = studentDao.getAllStudents();
-    private static final String PASSWORD = TextReaderIO.readIntValueFromFileByDataInputStream(
-            new File("src/chuyashkou/collections/additionalTasks/task1/resources/password.bin"))[0].toString();
 
     @Override
-    public void getAllStudents() {
-        TreeSet<Student> studentsSet = new TreeSet<>(new StudentsComparatorByName().thenComparing(new StudentsComparatorByAge()));
-        studentsSet.addAll(studentDao.getAllStudents());
+    public void getAllStudentsByName() {
+        TreeSet<Student> studentsSet = new TreeSet<>(Comparator.comparing(Student::getFullName).thenComparing(Student::getId));
+        studentsSet.addAll(studentDao.getAllStudents().values());
         studentsSet.forEach(System.out::println);
     }
 
     @Override
-    public void addNewStudent(BufferedReader bufferedReader) {
-        System.out.println("Введите данные нового студента через ',': ФИО, возраст, факультет, курс");
-        Student student = validateEnteredData(ConsoleReader.read(bufferedReader).split("[,]"));
-        if (student != null && itsStudentClone(student)) {
-            this.students.add(student);
-            studentDao.addAllStudents(this.students);
-            System.out.println("Студент добавлен.");
-        }
+    public void getAllStudentsByAge() {
+        TreeSet<Student> studentsSet = new TreeSet<>(Comparator.comparing(Student::getAge).thenComparing(Student::getId));
+        studentsSet.addAll(studentDao.getAllStudents().values());
+        studentsSet.forEach(System.out::println);
     }
 
     @Override
-    public void updateStudent(BufferedReader bufferedReader) {
-        System.out.println("Введите id студента: ");
-        int indexOldStudent;
-        if ((indexOldStudent = searchStudentById(ConsoleReader.read(bufferedReader))) < 0) {
-            System.out.println("Студента с таким id не существует");
+    public void addNewStudent(String[] studentFields) {
+        if (isInvalidEnterFormat(studentFields) || isInvalidName(studentFields[0]) || isInvalidAge(studentFields[1])
+                || isInvalidFaculty(studentFields[2]) || isInvalidYear(studentFields[3])) {
             return;
         }
-        System.out.println(this.students.get(indexOldStudent));
-        System.out.println("Введите новые данные студента через ',': ФИО, возраст, факультет, курс");
-        Student newStudent = validateEnteredData(ConsoleReader.read(bufferedReader).split("[,]"));
-        if (newStudent != null && itsStudentClone(newStudent)) {
-            newStudent.setId(this.students.get(indexOldStudent).getId());
-            this.students.remove(indexOldStudent);
-            this.students.add(newStudent);
-            studentDao.addAllStudents(this.students);
-            System.out.println("Студент обнавлен.");
-        }
-    }
-
-    @Override
-    public void deleteStudent(BufferedReader bufferedReader) {
-        System.out.println("Введите id студента: ");
-        int indexOldStudent;
-        if ((indexOldStudent = searchStudentById(ConsoleReader.read(bufferedReader))) < 0) {
-            System.out.println("Студента с таким id не существует");
+        Student student = parseStudent(studentFields);
+        if (isCloneStudent(Long.toString(student.getId()))) {
+            System.out.println("Такой студент уже существует.");
             return;
         }
-        this.students.remove(indexOldStudent);
-        studentDao.addAllStudents(this.students);
-        System.out.println("Студент удален.");
+        if (studentDao.addNewStudent(student) == null) System.out.println("Студент добавлен.");
+        else System.out.println("Студент не добавлен.");
+    }
+
+
+    @Override
+    public void updateStudent(String id, String[] studentFields) {
+        if (isInvalidId(id) || isInvalidEnterFormat(studentFields) || isInvalidName(studentFields[0])
+                || isInvalidAge(studentFields[1]) || isInvalidFaculty(studentFields[2]) || isInvalidYear(studentFields[3])) {
+            return;
+        } else if (!isCloneStudent(id)) {
+            System.out.printf("Студент с ID - %s не найден.\n", id.strip());
+            return;
+        }
+        Student newStudent = parseStudent(studentFields);
+        newStudent.setId(Long.parseLong(id.strip()));
+        Student oldStudent = studentDao.updateStudent(newStudent);
+        if (oldStudent != null)
+            System.out.printf("Студент %s отредактирован, обновленный студент - %s.\n", oldStudent, newStudent);
+        else System.out.println("Студент не отредактирован.");
     }
 
     @Override
-    public void getAllStudentsInFaculty(BufferedReader bufferedReader) {
-        System.out.println("Введите название факультета: ");
-        String faculty = ConsoleReader.read(bufferedReader);
-        if (itsFaculty(faculty)) return;
+    public void deleteStudent(String id) {
+        if (isInvalidId(id)) {
+            return;
+        } else if (!isCloneStudent(id)) {
+            System.out.printf("Студент с ID - %s не найден.\n", id.strip());
+            return;
+        }
+        Student student = studentDao.deleteStudent(Long.parseLong(id.strip()));
+        System.out.printf("Студент - %s удален.\n", student);
+    }
 
-        System.out.printf("На факультете %s обучаются:\n", faculty.toUpperCase());
-        for (Student student : this.students) {
-            if (faculty.equalsIgnoreCase(student.getFaculty())) {
-                System.out.printf("[%s, возраст - %s]\n", student.getFullName(), student.getAge());
+    @Override
+    public void getAllStudentsInFaculty(String faculty) {
+        if (isInvalidFaculty(faculty)) {
+            return;
+        }
+        List<Student> studentsInFaculty = studentDao.getAllStudentsInFaculty(faculty);
+        if (studentsInFaculty.isEmpty()) {
+            System.out.printf("На факультете %s нет студентов", faculty.strip().toUpperCase());
+        } else {
+            System.out.printf("На факультете %s обучаются:\n", faculty.toUpperCase());
+            for (Student student : studentsInFaculty) {
+                System.out.println(student);
             }
         }
     }
@@ -93,81 +100,68 @@ public class StudentServiceImpl implements StudentService {
         for (int i = 0; i < 20; i++) {
             Student student = new Student(names[random.nextInt(20)].strip(), random.nextInt(5) + 18,
                     faculties[random.nextInt(5)].strip(), random.nextInt(5) + 1);
-            if (itsStudentClone(student)) {
-                this.students.add(student);
-            }
-        }
-        studentDao.addAllStudents(this.students);
-    }
-
-    @Override
-    public void deleteAllStudents(BufferedReader bufferedReader) {
-        System.out.println("Введите пароль: ");
-        if (passwordValidation(ConsoleReader.read(bufferedReader))) {
-            this.students.clear();
-            studentDao.addAllStudents(students);
-            System.out.println("Все студенты удалены. ");
+            studentDao.addNewStudent(student);
         }
     }
 
-    private int searchStudentById(String strId) {
-        try {
-            long id = Long.parseLong(strId);
-            for (int i = 0; i < this.students.size(); i++) {
-                if (students.get(i).getId() == id) return i;
-            }
-        } catch (NumberFormatException e) {
+    private boolean isCloneStudent(String id) {
+        return studentDao.getAllStudents().containsKey(Long.parseLong(id.strip()));
+    }
+
+    private boolean isInvalidEnterFormat(String[] studentFields) {
+        if (studentFields.length != 4) {
             System.out.println("Неверный формат ввода.");
-            return -1;
+            return true;
         }
-        return -1;
+        return false;
     }
 
-    private boolean itsStudentClone(Student student) {
-        for (Student std : this.students) {
-            if (std.equals(student)) {
-                System.out.printf("Такой студент уже существует, id: %s.\n", std.getId());
-                return false;
-            }
+    private boolean isInvalidId(String id) {
+        if (!id.strip().matches(REGEX_BY_ID_VALIDATIONS)) {
+            System.out.println("ID введен неверно.");
+            return true;
         }
-        return true;
+        return false;
     }
 
-    private boolean itsFaculty(String facultyStr) {
+    private boolean isInvalidFaculty(String facultyStr) {
         for (Faculty faculty : Faculty.values()) {
-            if (faculty.getName().equalsIgnoreCase(facultyStr)) return false;
+            if (faculty.getName().equalsIgnoreCase(facultyStr.strip()))
+                return false;
         }
         System.out.println("Неверно введен факультет.");
         return true;
     }
 
-    private Student validateEnteredData(String[] data) {
-        try {
-            if (data.length != 4) {
-                System.out.println("Неверный формат ввода данных.");
-                return null;
-            } else if (Integer.parseInt(data[3].strip()) < 1 || Integer.parseInt(data[3].strip()) > 5) {
-                System.out.println("Неверно введен курс студента.");
-                return null;
-            } else if (Integer.parseInt(data[1].strip()) < 17) {
-                System.out.println("Неверно введен возраст студента.");
-                return null;
-            } else if (itsFaculty(data[2].strip())) {
-                return null;
-            }
-        } catch (NumberFormatException e) {
-            System.out.println("Неверный формат ввода данных.");
-            return null;
+    private boolean isInvalidYear(String year) {
+        if (!year.strip().matches(REGEX_BY_STUDENTS_YEAR_VALIDATIONS)) {
+            System.out.println("Неверно введен курс студента.");
+            return true;
         }
-        return new Student(data[0].strip(), Integer.parseInt(data[1].strip()), data[2].strip(), Integer.parseInt(data[3].strip()));
+        return false;
     }
 
-    private boolean passwordValidation(String password) {
-        if (password.equals(PASSWORD)) {
+    private boolean isInvalidAge(String age) {
+        if (!age.strip().matches(REGEX_BY_AGE_VALIDATIONS)) {
+            System.out.println("Неверно введен возраст студента.");
             return true;
-        } else {
-            System.out.println("Пароль введен неверно.");
-            return false;
         }
+        return false;
+    }
+
+    private boolean isInvalidName(String name) {
+        if (!name.strip().matches(REGEX_BY_NAME_VALIDATIONS)) {
+            System.out.println("Неверно введено имя студента, введите имя в формате (Фамилия Имя Отчество).");
+            return true;
+        }
+        return false;
+    }
+
+    private Student parseStudent(String[] studentFields) {
+        String fullName = studentFields[0].strip();
+        int age = Integer.parseInt(studentFields[1].strip());
+        String faculty = studentFields[2].strip();
+        int year = Integer.parseInt(studentFields[3].strip());
+        return new Student(fullName, age, faculty, year);
     }
 }

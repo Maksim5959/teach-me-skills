@@ -1,4 +1,4 @@
-package chuyashkou.collections.additionalTasks.task1.io;
+package chuyashkou.collections.additionalTasks.io;
 
 import java.io.BufferedReader;
 import java.io.IOException;

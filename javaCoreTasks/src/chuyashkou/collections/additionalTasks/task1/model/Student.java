@@ -1,8 +1,14 @@
 package chuyashkou.collections.additionalTasks.task1.model;
 
+import chuyashkou.collections.additionalTasks.io.LongDataReader;
+import chuyashkou.collections.additionalTasks.io.LongDataWriter;
+
+import java.io.File;
 import java.util.Objects;
 
 public class Student {
+
+    private static final File ID_SAVE_FILE = new File("src/chuyashkou/collections/additionalTasks/task1/resources/id.bin");
 
     private long id;
     private String fullName;
@@ -19,7 +25,8 @@ public class Student {
         this.age = age;
         this.faculty = faculty.toUpperCase();
         this.year = year;
-        this.id = Math.abs(this.hashCode());
+        this.id = readId();
+        writeId(++this.id);
     }
 
     public long getId() {
@@ -87,5 +94,13 @@ public class Student {
                 ", faculty='" + faculty + '\'' +
                 ", year=" + year +
                 '}';
+    }
+
+    private Long readId() {
+        return LongDataReader.read(Student.ID_SAVE_FILE);
+    }
+
+    private void writeId(Long id) {
+        LongDataWriter.write(id, Student.ID_SAVE_FILE);
     }
 }
