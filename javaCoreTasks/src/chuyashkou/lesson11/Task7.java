@@ -1,7 +1,7 @@
 package chuyashkou.lesson11;
 
 /*4. Отчет о сотрудниках,
-Добавить метод в класс Employee (chuyashkou.lessonString.task6.Employee),
+Добавить метод в класс Employee (chuyashkou.lessonString.Task6.Employee),
 который будет записывать отчет в файл.
 Используем класс PrintWriter.*/
 
