@@ -20,6 +20,7 @@ public class SortingAlgorithms {
         System.out.println(Arrays.toString(array));
         System.out.println(binarySearch(array, 50, 0, 9));
         System.out.println(linearSearch(array, 50));
+        printUniqueNumbers(new int[]{1, 2, 4, 4, 5, 5, 4, 0, 2, 1, 0, -7, -1, -1, -6});
     }
 
     private static int[] createArray(int elementsCount) {
@@ -56,5 +57,21 @@ public class SortingAlgorithms {
             }
         }
         return -1;
+    }
+
+    private static void printUniqueNumbers(int[] array) {
+        int maxValue = array[0];
+        int minValue = array[0];
+        for (int j : array) {
+            maxValue = j > maxValue ? j : maxValue;
+            minValue = j < minValue ? j : minValue;
+        }
+        int[] result = new int[(maxValue - minValue) + 1];
+        for (int i : array) {
+            result[i - minValue] += 1;
+        }
+        for (int i = 0; i < result.length; i++) {
+            if (result[i] == 1) System.out.printf("%d ", i + minValue);
+        }
     }
 }
