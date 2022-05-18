@@ -3,8 +3,8 @@ package chuyashkou.streamApi.devgenius;
 //2. Получить список заказов с продуктами, относящимися к категории «Игрушки».
 
 import chuyashkou.streamApi.devgenius.generator.CustomersGenerator;
-import chuyashkou.streamApi.devgenius.models.Customer;
-import chuyashkou.streamApi.devgenius.models.ProductCategory;
+import chuyashkou.streamApi.devgenius.model.Customer;
+import chuyashkou.streamApi.devgenius.model.ProductCategory;
 
 import java.util.List;
 

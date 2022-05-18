@@ -3,9 +3,9 @@ package chuyashkou.streamApi.devgenius;
 //5. Получите самый дешевый товар категории «Книги».
 
 import chuyashkou.streamApi.devgenius.generator.CustomersGenerator;
-import chuyashkou.streamApi.devgenius.models.Customer;
-import chuyashkou.streamApi.devgenius.models.Product;
-import chuyashkou.streamApi.devgenius.models.ProductCategory;
+import chuyashkou.streamApi.devgenius.model.Customer;
+import chuyashkou.streamApi.devgenius.model.Product;
+import chuyashkou.streamApi.devgenius.model.ProductCategory;
 
 import java.util.Comparator;
 import java.util.List;

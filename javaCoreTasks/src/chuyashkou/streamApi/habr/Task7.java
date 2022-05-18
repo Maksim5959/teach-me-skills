@@ -1,4 +1,4 @@
-package chuyashkou.streamApi.tms;
+package chuyashkou.streamApi.habr;
 
 /*Примеры использования Max и Min функций
 Условие: дана коллекция строк Arrays.asList(«a1», «a2», «a3», «a1»),
@@ -8,8 +8,8 @@ package chuyashkou.streamApi.tms;
 Найдем человека с максимальным возрастом - {name='Иван Иванович', age=69, sex=MAN}
 Найдем человека с минимальным возрастом - {name='Вася', age=16, sex=MAN}*/
 
-import chuyashkou.streamApi.tms.people.People;
-import chuyashkou.streamApi.tms.people.Sex;
+import chuyashkou.streamApi.habr.people.People;
+import chuyashkou.streamApi.habr.people.Sex;
 
 import java.util.Arrays;
 import java.util.Comparator;

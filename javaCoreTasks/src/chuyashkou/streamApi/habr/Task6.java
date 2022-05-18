@@ -1,4 +1,4 @@
-package chuyashkou.streamApi.tms;
+package chuyashkou.streamApi.habr;
 
 /*Примеры использования Sorted функции
 Условие: даны две коллекции коллекция строк Arrays.asList(«a1», «a4», «a3», «a2», «a1», «a4»)
@@ -13,8 +13,8 @@ new People(«Иван Иванович», 69, Sex.MAN)). Давайте посм
 Отсортировать коллекцию людей сначала по полу, а потом по возраст - [{'Вася'}, {'Петя'}, {'Иван Иванович'}, {'Елена'}]*/
 
 
-import chuyashkou.streamApi.tms.people.People;
-import chuyashkou.streamApi.tms.people.Sex;
+import chuyashkou.streamApi.habr.people.People;
+import chuyashkou.streamApi.habr.people.Sex;
 
 import java.util.Arrays;
 import java.util.Comparator;

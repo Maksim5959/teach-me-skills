@@ -1,4 +1,4 @@
-package chuyashkou.streamApi.devgenius.models;
+package chuyashkou.streamApi.devgenius.model;
 
 public enum ProductCategory {
 

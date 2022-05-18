@@ -1,24 +1,19 @@
 package chuyashkou.streamApi.tms;
 
-/*Условие: дана коллекция строк Arrays.asList(«a1», «a2», «a3», «a1»), давайте посмотрим
-, как её можно обрабатывать используя Match функции:
-Найти существуют ли хоть один «a1» элемент в коллекции - true
-Найти существуют ли хоть один «a8» элемент в коллекции - false
-Найти есть ли символ «1» у всех элементов коллекции	- false
-Проверить что не существуют ни одного «a7» элемента в коллекции	- true*/
+//4. Вывести мар - пол и люди.
 
-import java.util.Arrays;
+import chuyashkou.streamApi.tms.generator.PeopleGenerator;
+import chuyashkou.streamApi.tms.model.People;
+
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Task4 {
 
     public static void main(String[] args) {
 
-        List<String> stringList = Arrays.asList("a1", "a2", "a3", "a1");
+        List<People> peopleList = PeopleGenerator.getPeoples();
 
-        System.out.println(stringList.stream().anyMatch("a1"::equals));
-        System.out.println(stringList.stream().anyMatch("a8"::equals));
-        System.out.println(stringList.stream().allMatch(s -> s.contains("1")));
-        System.out.println(stringList.stream().noneMatch("a7"::equals));
+        peopleList.stream().collect(Collectors.groupingBy(People::getGender)).entrySet().forEach(System.out::println);
     }
 }
