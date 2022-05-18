@@ -3,8 +3,8 @@ package chuyashkou.streamApi.devgenius;
 //4. Получите список продуктов, заказанных клиентом уровня 2 в период с 01 мая 2022г. по 05 мая 2022 г.
 
 import chuyashkou.streamApi.devgenius.generator.CustomersGenerator;
-import chuyashkou.streamApi.devgenius.models.Customer;
-import chuyashkou.streamApi.devgenius.models.Product;
+import chuyashkou.streamApi.devgenius.model.Customer;
+import chuyashkou.streamApi.devgenius.model.Product;
 
 import java.time.LocalDate;
 import java.util.Comparator;

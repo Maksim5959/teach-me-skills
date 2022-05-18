@@ -15,8 +15,7 @@ public class Task13 {
 
         List<Country> countryList = CountryGenerator.getCountries();
 
-        Comparator<Country> countryComparator = Comparator.comparingInt(country -> country.getCities().size());
-        countryComparator.reversed();
+        Comparator<Country> countryComparator = Comparator.comparing(country -> country.getCities().size());
 
         countryList.stream().sorted(countryComparator.reversed())
                 .collect(Collectors.groupingBy(Country::getContinent)).entrySet()

@@ -1,4 +1,4 @@
-package chuyashkou.streamApi.tms.people;
+package chuyashkou.streamApi.habr.people;
 
 import java.util.Objects;
 

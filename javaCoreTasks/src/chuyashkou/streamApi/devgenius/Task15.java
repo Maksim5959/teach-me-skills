@@ -3,8 +3,8 @@ package chuyashkou.streamApi.devgenius;
 //15. Найдите самый дорогой продукт по категории
 
 import chuyashkou.streamApi.devgenius.generator.CustomersGenerator;
-import chuyashkou.streamApi.devgenius.models.Customer;
-import chuyashkou.streamApi.devgenius.models.Product;
+import chuyashkou.streamApi.devgenius.model.Customer;
+import chuyashkou.streamApi.devgenius.model.Product;
 
 import java.util.Comparator;
 import java.util.List;

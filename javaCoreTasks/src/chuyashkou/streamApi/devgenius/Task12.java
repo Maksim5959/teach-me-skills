@@ -3,8 +3,8 @@ package chuyashkou.streamApi.devgenius;
 //12. Создайте Map с записями заказов, сгруппированными по статусу.
 
 import chuyashkou.streamApi.devgenius.generator.CustomersGenerator;
-import chuyashkou.streamApi.devgenius.models.Customer;
-import chuyashkou.streamApi.devgenius.models.Order;
+import chuyashkou.streamApi.devgenius.model.Customer;
+import chuyashkou.streamApi.devgenius.model.Order;
 
 import java.util.List;
 import java.util.stream.Collectors;

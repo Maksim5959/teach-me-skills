@@ -1,4 +1,4 @@
-package chuyashkou.streamApi.tms;
+package chuyashkou.streamApi.habr;
 
 /*Примеры использования Map функций (map, mapToInt, FlatMap, FlatMapToInt)
 Условие: даны две коллекции collection1 = Arrays.asList(«a1», «a2», «a3», «a1») и

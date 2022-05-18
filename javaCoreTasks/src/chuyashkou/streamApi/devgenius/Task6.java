@@ -3,9 +3,9 @@ package chuyashkou.streamApi.devgenius;
 // 6. Получите 3 последних доставленных заказа.
 
 import chuyashkou.streamApi.devgenius.generator.CustomersGenerator;
-import chuyashkou.streamApi.devgenius.models.Customer;
-import chuyashkou.streamApi.devgenius.models.Order;
-import chuyashkou.streamApi.devgenius.models.OrderStatus;
+import chuyashkou.streamApi.devgenius.model.Customer;
+import chuyashkou.streamApi.devgenius.model.Order;
+import chuyashkou.streamApi.devgenius.model.OrderStatus;
 
 import java.util.Comparator;
 import java.util.List;

@@ -1,4 +1,4 @@
-package chuyashkou.streamApi.tms;
+package chuyashkou.streamApi.habr;
 
 /*Условие: Дана коллекция чисел Arrays.asList(1, 2, 3, 4), рассмотрим работу collect и toArray с ней
 Получить сумму нечетных чисел - 4

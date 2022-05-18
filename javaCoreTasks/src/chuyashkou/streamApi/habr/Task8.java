@@ -1,4 +1,4 @@
-package chuyashkou.streamApi.tms;
+package chuyashkou.streamApi.habr;
 
 /*Примеры использования Reduce функции
 Метод reduce позволяет выполнять агрегатные функции на всей коллекцией (такие как сумма,

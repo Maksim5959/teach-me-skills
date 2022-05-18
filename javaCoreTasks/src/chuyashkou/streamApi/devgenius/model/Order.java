@@ -1,4 +1,4 @@
-package chuyashkou.streamApi.devgenius.models;
+package chuyashkou.streamApi.devgenius.model;
 
 import java.time.LocalDate;
 import java.util.List;

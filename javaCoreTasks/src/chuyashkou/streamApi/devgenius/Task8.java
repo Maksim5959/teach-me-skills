@@ -3,9 +3,9 @@ package chuyashkou.streamApi.devgenius;
 //8. Рассчитайте общую сумму всех выполненных заказов, сделанных в мае 2022 г.
 
 import chuyashkou.streamApi.devgenius.generator.CustomersGenerator;
-import chuyashkou.streamApi.devgenius.models.Customer;
-import chuyashkou.streamApi.devgenius.models.OrderStatus;
-import chuyashkou.streamApi.devgenius.models.Product;
+import chuyashkou.streamApi.devgenius.model.Customer;
+import chuyashkou.streamApi.devgenius.model.OrderStatus;
+import chuyashkou.streamApi.devgenius.model.Product;
 
 import java.time.Month;
 import java.util.List;

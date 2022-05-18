@@ -3,8 +3,8 @@ package chuyashkou.streamApi.devgenius;
 //14. Получите Map со списком названий продуктов по категориям.
 
 import chuyashkou.streamApi.devgenius.generator.CustomersGenerator;
-import chuyashkou.streamApi.devgenius.models.Customer;
-import chuyashkou.streamApi.devgenius.models.Product;
+import chuyashkou.streamApi.devgenius.model.Customer;
+import chuyashkou.streamApi.devgenius.model.Product;
 
 import java.util.List;
 import java.util.stream.Collectors;
