@@ -15,8 +15,9 @@ public class Task1 {
 
         List<People> peopleList = PeopleGenerator.getPeoples();
 
-        System.out.println(peopleList.stream().max(Comparator
-                .comparing(people -> people.getHobbies().stream()
+        System.out.printf("\nHuman with max sum of marks - %s", peopleList.stream()
+                .peek(System.out::println)
+                .max(Comparator.comparing(people -> people.getHobbies().stream()
                         .mapToInt(Hobby::getMark)
                         .sum(), Integer::compareTo))
                 .orElse(new People()));
