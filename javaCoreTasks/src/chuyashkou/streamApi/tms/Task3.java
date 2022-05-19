@@ -22,7 +22,8 @@ public class Task3 {
                 .groupingBy(Function.identity(), Collectors
                         .flatMapping(people -> people.getHobbies().stream(), Collectors
                                 .summingInt(Hobby::getMark)))).entrySet().stream()
-                .sorted(Comparator.comparing(Map.Entry<People, Integer>::getValue).reversed())
+                .sorted(Comparator.comparing(Map.Entry<People, Integer>::getValue).reversed()
+                        .thenComparing(e -> e.getKey().getName(), String::compareTo))
                 .forEach(System.out::println);
     }
 }
