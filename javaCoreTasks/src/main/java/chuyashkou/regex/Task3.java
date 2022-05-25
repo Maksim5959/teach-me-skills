@@ -1,16 +1,16 @@
 package chuyashkou.regex;
 
-//Написать email-валидатор.
+//Поиск високосного года регулярным выражением.
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Task2 {
+public class Task3 {
 
     public static void main(String[] args) {
 
-        String text = "maksim@gmail.com";
-        String regex = "^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$";
+        String text = "2000";
+        String regex = "^(([1-9]\\d)(0[48]|[2468][048]|[13579][26])|(([2468][048]|[13579][26])00))$";
 
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(text);
@@ -18,4 +18,3 @@ public class Task2 {
         System.out.println(matcher.find());
     }
 }
-
