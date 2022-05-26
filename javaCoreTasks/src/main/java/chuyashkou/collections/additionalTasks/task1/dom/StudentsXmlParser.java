@@ -23,7 +23,7 @@ public final class StudentsXmlParser {
 
         try {
             document = dbf.newDocumentBuilder().parse(
-                    new File("src/chuyashkou/collections/additionalTasks/task1/resources/students.xml"));
+                    new File("src/main/java/chuyashkou/collections/additionalTasks/task1/resources/students.xml"));
         } catch (ParserConfigurationException | IOException | SAXException e) {
             e.printStackTrace();
         }
