@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Created with Liquid Technologies Online Tools 1.0 (https://www.liquid-technologies.com) -->
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="books">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" name="book">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="relatedBooks">
+                                <xs:complexType>
+                                    <xs:sequence minOccurs="0">
+                                        <xs:element maxOccurs="unbounded" name="relatedBook">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="relatedBooks">
+                                                        <xs:complexType>
+                                                            <xs:sequence minOccurs="0">
+                                                                <xs:element maxOccurs="unbounded" name="relatedBook">
+                                                                    <xs:complexType>
+                                                                        <xs:sequence>
+                                                                            <xs:element name="relatedBooks">
+                                                                                <xs:complexType>
+                                                                                    <xs:sequence minOccurs="0">
+                                                                                        <xs:element name="relatedBook">
+                                                                                            <xs:complexType>
+                                                                                                <xs:sequence>
+                                                                                                    <xs:element name="relatedBooks" />
+                                                                                                </xs:sequence>
+                                                                                                <xs:attribute name="title" type="xs:string" use="required" />
+                                                                                                <xs:attribute name="vendorCode" type="xs:string" use="required" />
+                                                                                                <xs:attribute name="publishingDate" type="xs:date" use="required" />
+                                                                                            </xs:complexType>
+                                                                                        </xs:element>
+                                                                                    </xs:sequence>
+                                                                                </xs:complexType>
+                                                                            </xs:element>
+                                                                        </xs:sequence>
+                                                                        <xs:attribute name="title" type="xs:string" use="required" />
+                                                                        <xs:attribute name="vendorCode" type="xs:string" use="required" />
+                                                                        <xs:attribute name="publishingDate" type="xs:date" use="required" />
+                                                                    </xs:complexType>
+                                                                </xs:element>
+                                                            </xs:sequence>
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                </xs:sequence>
+                                                <xs:attribute name="title" type="xs:string" use="required" />
+                                                <xs:attribute name="vendorCode" type="xs:string" use="required" />
+                                                <xs:attribute name="publishingDate" type="xs:date" use="required" />
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                        <xs:attribute name="title" type="xs:string" use="required" />
+                        <xs:attribute name="vendorCode" type="xs:string" use="required" />
+                        <xs:attribute name="publishingDate" type="xs:date" use="required" />
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
