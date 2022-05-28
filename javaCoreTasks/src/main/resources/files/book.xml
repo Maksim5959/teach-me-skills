@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<books>
+    <book title="War and peace" vendorCode="123AABB" publishingDate="1950-12-12">
+        <relatedBooks/>
+    </book>
+    <book title="War and peace2" vendorCode="333AABB" publishingDate="1951-12-12">
+        <relatedBooks>
+            <relatedBook title="War and peace" vendorCode="123AABB" publishingDate="1950-12-12">
+                <relatedBooks/>
+            </relatedBook>
+        </relatedBooks>
+    </book>
+    <book title="War and peace3" vendorCode="233AABB" publishingDate="1952-12-12">
+        <relatedBooks>
+            <relatedBook title="War and peace" vendorCode="123AABB" publishingDate="1950-12-12">
+                <relatedBooks/>
+            </relatedBook>
+            <relatedBook title="War and peace2" vendorCode="333AABB" publishingDate="1951-12-12">
+                <relatedBooks>
+                    <relatedBook title="War and peace" vendorCode="123AABB" publishingDate="1950-12-12">
+                        <relatedBooks/>
+                    </relatedBook>
+                </relatedBooks>
+            </relatedBook>
+        </relatedBooks>
+    </book>
+    <book title="War and peace4" vendorCode="433AABB" publishingDate="1953-12-12">
+        <relatedBooks>
+            <relatedBook title="War and peace" vendorCode="123AABB" publishingDate="1950-12-12">
+                <relatedBooks/>
+            </relatedBook>
+            <relatedBook title="War and peace2" vendorCode="333AABB" publishingDate="1951-12-12">
+                <relatedBooks>
+                    <relatedBook title="War and peace" vendorCode="123AABB" publishingDate="1950-12-12">
+                        <relatedBooks/>
+                    </relatedBook>
+                </relatedBooks>
+            </relatedBook>
+            <relatedBook title="War and peace3" vendorCode="233AABB" publishingDate="1952-12-12">
+                <relatedBooks>
+                    <relatedBook title="War and peace" vendorCode="123AABB" publishingDate="1950-12-12">
+                        <relatedBooks/>
+                    </relatedBook>
+                    <relatedBook title="War and peace2" vendorCode="333AABB" publishingDate="1951-12-12">
+                        <relatedBooks>
+                            <relatedBook title="War and peace" vendorCode="123AABB" publishingDate="1950-12-12">
+                                <relatedBooks/>
+                            </relatedBook>
+                        </relatedBooks>
+                    </relatedBook>
+                </relatedBooks>
+            </relatedBook>
+        </relatedBooks>
+    </book>
+</books>
