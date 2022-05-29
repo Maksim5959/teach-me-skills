@@ -1,6 +1,5 @@
 package com.chuyashkou.stream_api.devgenius.generator;
 
-import chuyashkou.streamApi.devgenius.model.*;
 import com.chuyashkou.stream_api.devgenius.model.*;
 
 import java.time.LocalDate;
