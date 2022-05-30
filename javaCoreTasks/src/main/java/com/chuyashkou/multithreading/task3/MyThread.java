@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.SneakyThrows;
 
+import java.util.Objects;
+
 @AllArgsConstructor
 @Getter
 public class MyThread extends Thread {
@@ -17,7 +19,7 @@ public class MyThread extends Thread {
                 System.out.printf("%s print %s\n", this.getName(), stringBuilder);
             }
             System.out.printf("%s increase value %s\n", this.getName(), stringBuilder);
-            stringBuilder.append(1);
+            stringBuilder.replace(0, 1, Objects.toString((char) (stringBuilder.toString().toCharArray()[0] + 1)));
         }
     }
 }
