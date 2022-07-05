@@ -1,0 +1,19 @@
+.py-5 {
+    padding-top: -9px!important;
+    padding-bottom: 3rem!important;
+}
+.gender{
+    margin-bottom: 15px;
+}
+.mb-5 {
+}
+.form-check{;
+    margin-top: -37px;
+    margin-bottom: 6px;
+}
+.btn-group-lg>.btn, .btn-lg {
+    padding: 0.5rem 1rem;
+    font-size: 1.25rem;
+    border-radius: 0.3rem;
+    margin-top: 10px;
+}
