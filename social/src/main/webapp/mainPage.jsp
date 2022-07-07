@@ -6,6 +6,7 @@
     <jsp:include page="fragments/style.jsp"></jsp:include>
 </head>
 <body>
+<%request.setAttribute("navigation", "group1");%>
 <jsp:include page="fragments/header.jsp"></jsp:include>
 <div class="container">
     <h1 class="display-2" align="center">Social Network</h1>

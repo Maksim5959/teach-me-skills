@@ -1,6 +1,5 @@
 package by.chuyashkou.social.service.impl;
 
-import by.chuyashkou.social.connection.JDBCConnector;
 import by.chuyashkou.social.model.User;
 import by.chuyashkou.social.repository.UserRepository;
 import by.chuyashkou.social.repository.impl.UserRepositoryImpl;
@@ -13,8 +12,8 @@ public class UserServiceImpl implements UserService {
 
     private final UserRepository repository;
 
-    public UserServiceImpl(JDBCConnector connector) {
-        this.repository = new UserRepositoryImpl(connector);
+    public UserServiceImpl() {
+        this.repository = new UserRepositoryImpl();
     }
 
     @Override

@@ -7,6 +7,7 @@
     <title>Registration</title>
 </head>
 <body>
+<%request.setAttribute("navigation", "group1");%>
 <jsp:include page="fragments/header.jsp"></jsp:include>
 <section class="vh-100">
     <div class="container py-5 h-100">
@@ -16,7 +17,8 @@
                      class="img-fluid" alt="Phone image">
             </div>
             <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
-                <form action="user/register" method="post">
+                <form action="frontController" method="post">
+                    <input type="hidden" name="command" value="registration"/>
                     <!-- Full name input -->
                     <div class="form-outline mb-4">
                         <label for="FullName"></label>

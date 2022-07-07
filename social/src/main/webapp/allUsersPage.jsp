@@ -8,10 +8,9 @@
     <title>All users</title>
 </head>
 <body>
+<%request.setAttribute("navigation", "group2");%>
 <jsp:include page="fragments/header.jsp"></jsp:include>
-
 <h1>Social users:</h1>
-
 <table class="table align-middle mb-0 bg-white">
     <thead class="bg-light">
     <tr>
@@ -25,13 +24,14 @@
     </thead>
     <tbody>
     <c:forEach var="user" items="${users}" varStatus="counter">
-
         <tr>
             <th scope="row">${counter.count}</th>
             <td>
                 <div class="d-flex align-items-center">
-                    <form action="subscriber/profile" method="post" class="f1">
+                    <form action="frontController" method="post" class="f1">
+                        <input type="hidden" name="command" value="user_profile">
                         <c:if test="${user.gender == 'MALE'}">
+                            <input type="hidden" name="navigation" value="subscribes">
                             <input type="hidden" value="${user.id}" name="userId">
                             <input type="image"
                                    src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
@@ -61,13 +61,13 @@
                 <p class="fw-normal mb-1">${user.age}</p>
             </td>
             <td>
-                <form action="subscribe" method="post">
+                <form action="frontController" method="post">
                     <% boolean flag = false;
                         request.setAttribute("flag", flag);
                     %>
                     <c:forEach var="sub" items="${subscribes}" varStatus="counter">
                         <c:if test="${sub.id == user.id}">
-                            <button type="submit" value="${user.id}" name="id" class="btn btn-success" disabled>
+                            <button type="submit" class="btn btn-success" disabled>
                                 Subscribe
                             </button>
                             <% flag = true;
@@ -76,7 +76,9 @@
                         </c:if>
                     </c:forEach>
                     <c:if test="${flag == false}">
-                        <button type="submit" value="${user.id}" name="id" class="btn btn-success">Subscribe</button>
+                            <input type="hidden" name="command" value="subscribe">
+                            <input type="hidden" name="id" value="${user.id}">
+                            <button type="submit" class="btn btn-success">Subscribe</button>
                     </c:if>
                 </form>
             </td>

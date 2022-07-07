@@ -7,6 +7,7 @@
     <title>Followers</title>
 </head>
 <body>
+<%request.setAttribute("navigation", "group2");%>
 <jsp:include page="fragments/header.jsp"></jsp:include>
 <h1>Followers:</h1>
 <table class="table align-middle mb-0 bg-white">
@@ -26,8 +27,10 @@
             <th scope="row">${counter.count}</th>
             <td>
                 <div class="d-flex align-items-center">
-                    <form action="followers/profile" method="post" class="f1">
+                    <form action="frontController" method="post" class="f1">
+                        <input type="hidden" name="command" value="user_profile">
                         <c:if test="${user.gender == 'MALE'}">
+                            <input type="hidden" name="navigation" value="followers">
                             <input type="hidden" value="${user.id}" name="userId">
                             <input type="image"
                                    src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
@@ -57,8 +60,9 @@
                 <p class="fw-normal mb-1"><c:out value="${user.age}"/></p>
             </td>
             <td>
-                <form action="deleteFollower" method="post">
-                <button type="submit" value="${user.id}" name="id" class="btn btn-danger">Delete</button>
+                <form action="frontController" method="post">
+                    <input type="hidden" name="command" value="delete_follower">
+                    <button type="submit" value="${user.id}" name="id" class="btn btn-danger">Delete</button>
                 </form>
             </td>
         </tr>

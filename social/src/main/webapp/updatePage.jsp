@@ -9,16 +9,17 @@
     <title>Update user</title>
 </head>
 <body>
+<%request.setAttribute("navigation", "group2");%>
 <jsp:include page="fragments/header.jsp"></jsp:include>
 <section style="background-color: #eeeeee;">
-    <form action="update" method="post">
-    <div class="container py-5">
-
-        <div class="row">
-            <div class="col-lg-4">
-                <div class="card mb-4">
-                    <div class="card-body text-center">
-                        <c:if test="${user.gender == 'MALE'}">
+    <form action="frontController" method="post">
+        <input type="hidden" name="command" value="update_user"/>
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="card mb-4">
+                        <div class="card-body text-center">
+                            <c:if test="${user.gender == 'MALE'}">
                             <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
                                  alt="avatar"
                                  class="rounded-circle img-fluid" style="width: 150px;"/>
