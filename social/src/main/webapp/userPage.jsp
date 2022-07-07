@@ -7,6 +7,7 @@
     <title>User page</title>
 </head>
 <body>
+<%request.setAttribute("navigation", "userPage");%>
 <jsp:include page="fragments/header.jsp"></jsp:include>
 <section style="background-color: #eeeeee;">
     <div class="container py-5">
@@ -27,24 +28,14 @@
                         <p class="text-muted mb-1">Age: <c:out value="${user.age}"/></p>
                         <p class="text-muted mb-4">Gender: <c:out value="${user.gender}"/></p>
                         <div class="d-flex justify-content-center mb-2">
-                            <form action="usersPage.jsp" method="get">
-                                <button type="submit" class="btn btn-outline-success btn-rounded">Get all users </button>
-                            </form>
-                            <form action="followers.jsp" method="get">
-                                <button type="submit" class="btn btn-outline-primary btn-rounded ms-1">Show followers
+                                <a href="${pageContext.request.contextPath}/frontController?command=all_users" class="btn btn-outline-success btn-rounded">Get all users </a>
+                                <a href="${pageContext.request.contextPath}/frontController?command=followers"  class="btn btn-outline-primary btn-rounded ms-1">Show followers
                                         <span class="badge bg-secondary">${fn:length(user.followers)}</span>
-                                </button>
-                            </form>
+                                </a>
                         </div>
                         <div class="d-flex justify-content-center mb-2">
-                            <form action="updatePage.jsp" method="get">
-                                <button type="submit" class="btn btn-outline-primary btn-rounded">Update account
-                                </button>
-                            </form>
-                            <form action="delete" method="post">
-                                <button onclick="test(event)" type="submit" class="btn btn-outline-danger btn-rounded ms-1">Delete account
-                                </button>
-                            </form>
+                                <a href="updatePage.jsp" type="submit" class="btn btn-outline-primary btn-rounded">Update account</a>
+                                <a href="${pageContext.request.contextPath}/frontController?command=delete_user" onclick="test(event)" type="submit" class="btn btn-outline-danger btn-rounded ms-1">Delete account</a>
                         </div>
                     </div>
                 </div>

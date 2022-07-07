@@ -1,45 +1,40 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <nav class="navbar navbar-light bg-light">
-
-    <c:if test="${pageContext.request.requestURI == '/social/mainPage.jsp' || pageContext.request.requestURI == '/social/login.jsp'
-    || pageContext.request.requestURI == '/social/registration.jsp'}">
+    <c:if test="${requestScope.navigation == 'group1'}">
         <form class="container-fluid justify-content-start">
             <a class="navbar-brand" href="mainPage.jsp">Social</a>
-            <button onclick="document.location='registration.jsp'" class="btn btn-outline-success me-2" type="button">Register</button>
-            <button onclick="document.location='login.jsp'" class="btn btn-sm btn-outline-secondary me-2" type="button">Login</button>
+            <a href="registration.jsp"  class="btn btn-outline-success me-2" type="button">Register</a>
+            <a href="login.jsp" class="btn btn-sm btn-outline-secondary me-2" type="button">Login</a>
         </form>
     </c:if>
-
-    <c:if test="${pageContext.request.requestURI == '/social/user/login' || pageContext.request.requestURI == '/social/user/userPage.jsp'}">
-        <form class="container-fluid justify-content-start" action="user/logout" method="get">
+    <c:if test="${requestScope.navigation == 'userPage'}">
+        <form class="container-fluid justify-content-start">
             <a class="navbar-brand" href="userPage.jsp">Social</a>
-            <button class="btn btn-sm btn-outline-secondary me-2" type="submit">Logout</button>
+            <a href="${pageContext.request.contextPath}/frontController?command=logout" class="btn btn-sm btn-outline-secondary me-2">Logout</a>
         </form>
     </c:if>
 
-    <c:if test="${pageContext.request.requestURI == '/social/user/usersPage.jsp' || pageContext.request.requestURI == '/social/user/followers.jsp'
-    || pageContext.request.requestURI == '/social/user/updatePage.jsp' || pageContext.request.requestURI == '/social/user/deletePage.jsp'
-    || pageContext.request.requestURI == '/social/user/subscribe' || pageContext.request.requestURI == '/social/user/deleteFollower'}">
-        <form  class="container-fluid justify-content-start" action="user/logout" method="get">
+    <c:if test="${requestScope.navigation == 'group2'}">
+        <form  class="container-fluid justify-content-start">
             <a class="navbar-brand" href="userPage.jsp">Social</a>
-            <button class="btn btn-sm btn-outline-secondary me-2" type="submit">Logout</button>
-            <button onclick="document.location='userPage.jsp'" class="btn btn-sm btn-outline-secondary me-2" type="button">Back</button>
+            <a href="${pageContext.request.contextPath}/frontController?command=logout" class="btn btn-sm btn-outline-secondary me-2">Logout</a>
+            <a href="userPage.jsp" class="btn btn-sm btn-outline-secondary me-2" type="button">Back</a>
         </form>
     </c:if>
 
-    <c:if test="${pageContext.request.requestURI == '/social/user/subscriber/profile'}">
-        <form  class="container-fluid justify-content-start" action="user/logout" method="get">
-            <a class="navbar-brand" href="http://localhost:8080/social/user/userPage.jsp">Social</a>
-            <button class="btn btn-sm btn-outline-secondary me-2" type="submit">Logout</button>
-            <button onclick="document.location='http://localhost:8080/social/user/usersPage.jsp'" class="btn btn-sm btn-outline-secondary me-2" type="button">Back</button>
+    <c:if test="${requestScope.navigation == 'subscribes'}">
+        <form  class="container-fluid justify-content-start">
+            <a class="navbar-brand" href="${pageContext.request.contextPath}/userPage.jsp">Social</a>
+            <a href="${pageContext.request.contextPath}/frontController?command=logout" class="btn btn-sm btn-outline-secondary me-2">Logout</a>
+            <a href="${pageContext.request.contextPath}/allUsersPage.jsp" class="btn btn-sm btn-outline-secondary me-2" type="button">Back</a>
         </form>
     </c:if>
 
-    <c:if test="${pageContext.request.requestURI == '/social/user/followers/profile'}">
-        <form  class="container-fluid justify-content-start" action="user/logout" method="get">
-            <a class="navbar-brand" href="http://localhost:8080/social/user/userPage.jsp">Social</a>
-            <button class="btn btn-sm btn-outline-secondary me-2" type="submit">Logout</button>
-            <button onclick="document.location='http://localhost:8080/social/user/followers.jsp'" class="btn btn-sm btn-outline-secondary me-2" type="button">Back</button>
+    <c:if test="${requestScope.navigation == 'followers'}">
+        <form  class="container-fluid justify-content-start">
+            <a class="navbar-brand" href="${pageContext.request.contextPath}/userPage.jsp">Social</a>
+            <a href="${pageContext.request.contextPath}/frontController?command=logout" class="btn btn-sm btn-outline-secondary me-2">Logout</a>
+            <a href="${pageContext.request.contextPath}/followers.jsp" class="btn btn-sm btn-outline-secondary me-2" type="button">Back</a>
         </form>
     </c:if>
 </nav>

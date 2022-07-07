@@ -16,14 +16,11 @@ public class JDBCConnector {
     @SneakyThrows
     public Connection getConnection() {
         Class.forName("com.mysql.cj.jdbc.Driver");
-        if (connection == null) {
             try {
                 connection = DriverManager.getConnection(JDBC_URL, USER, PASSWORD);
-                return connection;
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-        }
         return connection;
     }
 }
